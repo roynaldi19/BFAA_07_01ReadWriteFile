@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.roynaldi19.bfaa_07_01readwritefile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,5 +74,4 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
 }
