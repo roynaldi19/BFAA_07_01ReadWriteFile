@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.roynaldi19.bfaa_07_01readwritefile.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,16 +15,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonNew.setOnClickListener(this)
-        binding.buttonOpen.setOnClickListener(this)
-        binding.buttonSave.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.button_new -> newFile()
-            R.id.button_open -> showList()
-            R.id.button_save -> saveFile()
+        binding.buttonNew.setOnClickListener{
+            newFile()
+        }
+        binding.buttonOpen.setOnClickListener{
+            showList()
+        }
+        binding.buttonSave.setOnClickListener{
+            saveFile()
         }
     }
 
