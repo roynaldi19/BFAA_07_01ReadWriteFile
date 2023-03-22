@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.roynaldi19.bfaa_07_01readwritefile">
+    package="com.roynaldi19.dc3_07readwritefile">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BFAA_07_01ReadWriteFile">
         <activity
-            android:name=".MainActivity"
+            android:name="com.roynaldi19.dc3_07readwritefile.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

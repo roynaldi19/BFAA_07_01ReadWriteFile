@@ -1,11 +1,10 @@
-package com.roynaldi19.bfaa_07_01readwritefile
+package com.roynaldi19.dc3_07readwritefile
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.roynaldi19.bfaa_07_01readwritefile.databinding.ActivityMainBinding
+import com.roynaldi19.dc3_07readwritefile.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

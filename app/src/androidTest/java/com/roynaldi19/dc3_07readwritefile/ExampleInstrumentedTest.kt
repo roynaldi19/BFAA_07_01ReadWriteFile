@@ -1,4 +1,4 @@
-package com.roynaldi19.bfaa_07_01readwritefile
+package com.roynaldi19.dc3_07readwritefile
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
