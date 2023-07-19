@@ -1,12 +1,12 @@
 package com.roynaldi19.dc3_07readwritefile
-
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.roynaldi19.dc3_07readwritefile.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,28 +14,31 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonNew.setOnClickListener{
-            newFile()
-        }
-        binding.buttonOpen.setOnClickListener{
-            showList()
-        }
-        binding.buttonSave.setOnClickListener{
-            saveFile()
+        binding.buttonNew.setOnClickListener(this)
+        binding.buttonOpen.setOnClickListener(this)
+        binding.buttonSave.setOnClickListener(this)
+
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.button_new -> newFile()
+            R.id.button_open -> showList()
+                R.id.button_save -> saveFile()
         }
     }
 
     private fun newFile() {
-        binding.editFile.setText("")
         binding.editTitle.setText("")
-        Toast.makeText(this, "Clearing File", Toast.LENGTH_SHORT).show()
+        binding.editFile.setText("")
+        Toast.makeText(this, "Clearing file", Toast.LENGTH_SHORT).show()
     }
 
     private fun showList() {
         val items = fileList()
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Pilih File yang diinginkan")
-        builder.setItems(items) { dialog, item -> loadData(items[item].toString()) }
+        builder.setTitle("Pilih file yang di inginkan")
+        builder.setItems(items) { dialog, item -> loadData(items[item].toString())}
         val alert = builder.create()
         alert.show()
     }
@@ -48,26 +51,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveFile() {
-        when {
-            binding.editTitle.text.toString().isEmpty() -> Toast.makeText(
-                this,
-                "Title harus di usi terlebih dahulu",
-                Toast.LENGTH_SHORT
-            ).show()
-            binding.editFile.text.toString().isEmpty() -> Toast.makeText(
-                this,
-                "Konten harus di usi terlebih dahulu",
-                Toast.LENGTH_SHORT
-            ).show()
+        when{
+            binding.editTitle.text.toString().isEmpty() -> Toast.makeText(this, "Title harus diisi terlebih dahulu", Toast.LENGTH_SHORT).show()
+            binding.editFile.text.toString().isEmpty() -> Toast.makeText(this, "Kontent harus diisi terlebih dahulu", Toast.LENGTH_SHORT).show()
             else -> {
                 val title = binding.editTitle.text.toString()
                 val text = binding.editFile.text.toString()
                 val fileModel = FileModel()
                 fileModel.filename = title
-                fileModel.data = text
+                fileModel. data = text
                 FileHelper.writeToFile(fileModel, this)
-                Toast.makeText(this, "Saving " + fileModel.filename + " file", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "Saving " + fileModel.filename + " file", Toast.LENGTH_SHORT).show()
             }
         }
     }

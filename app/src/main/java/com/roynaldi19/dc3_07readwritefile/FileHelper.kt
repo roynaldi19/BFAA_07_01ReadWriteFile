@@ -3,7 +3,6 @@ package com.roynaldi19.dc3_07readwritefile
 import android.content.Context
 
 internal object FileHelper {
-
     fun writeToFile(fileModel: FileModel, context: Context) {
         context.openFileOutput(fileModel.filename, Context.MODE_PRIVATE).use {
             it.write(fileModel.data?.toByteArray())
